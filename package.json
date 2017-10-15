@@ -1,0 +1,31 @@
+{
+  "name": "swagger-to-wiremock",
+  "version": "0.1.0",
+  "private": true,
+  "homepage" : "http://mauriciomelo.github.io/swagger-to-wiremock",
+  "dependencies": {
+    "axios": "^0.16.2",
+    "codemirror": "^5.30.0",
+    "install": "^0.10.1",
+    "json-refs": "^3.0.2",
+    "json-schema-ref-parser": "^4.0.0",
+    "material-ui": "^0.19.4",
+    "npm": "^5.5.1",
+    "prop-types": "^15.6.0",
+    "react": "^16.0.0",
+    "react-codemirror": "^1.0.0",
+    "react-dom": "^16.0.0",
+    "react-scripts": "1.0.14",
+    "react-tap-event-plugin": "^3.0.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "deploy": "gh-pages -d build"
+  },
+  "devDependencies": {
+    "gh-pages": "^1.0.0"
+  }
+}
