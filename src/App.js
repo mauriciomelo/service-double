@@ -73,7 +73,7 @@ class App extends React.Component {
       const { data } = await axios.post(`${this.state.wiremockUrl}__admin/mappings`, {
         request : {
           method : 'GET',
-          urlPathPattern : name.replace(/\s*\{.*?\}\s*/g, '(.*)')
+          urlPathPattern : `${this.basePath}${name.replace(/\s*\{.*?\}\s*/g, '(.*)')}`
         },
         response : {
           status : 200,
@@ -97,13 +97,21 @@ class App extends React.Component {
     this.setState({ definitionsState: { ...this.definitionsState, ...{ [name]: newState } } });
   }
 
+  get basePath() {
+    return this.state.swaggerData && this.state.swaggerData.basePath;
+  }
+
   render() {
     return (
       <MuiThemeProvider>
         <div className='App'>
           <h1 className="appTitle">Swagger to Wiremock</h1>
-          <p>{ this.state.swaggerUrl }</p>
-          <p>{ this.state.wiremockUrl }</p>
+          <p>swagger: <a target="_blank" href={this.state.swaggerUrl}>{ this.state.swaggerUrl }</a></p>
+          <p>wiremock: <a target="_blank" href={this.state.wiremockUrl}>{ this.state.wiremockUrl }</a></p>
+          {this.basePath ?
+            <p>base path: {this.basePath}</p>
+            : null
+          }
           {this.state.swaggerData ?
             this.paths.map((path) => (
               <Path
